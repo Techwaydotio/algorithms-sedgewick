@@ -20,6 +20,15 @@ theme:
 nav:
   - Home: index.md
 
+extra_css:
+  - css/katex.css
+  - https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css
+
+extra_javascript:
+  - js/katex.js
+  - https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js
+
 markdown_extensions:
   - codehilite
   - toc:
