@@ -22,10 +22,10 @@ body > .container {
 }
 
 pre, code {
-    background: #e9ecef;
-    color: #333;
+    background: #f7f7f9;
+    color: #585260;
     border: 1px solid rgba(0,0,0,0.125);
-    border-radius: 0.25rem;
+    border-radius: 0.4rem;
 }
 
 pre {
@@ -44,11 +44,11 @@ pre code {
 }
 
 a code {
-    color: #dd4814;
+    color: #78c2ad;
 }
 
 a:hover code {
-    color: #97310e;
+    color: #4aa48a;
 }
 
 kbd {
@@ -77,7 +77,7 @@ footer {
 .admonition {
     margin-bottom: 1rem;
     border: 1px solid rgba(0,0,0,0.125);
-    border-radius: 0.25rem;
+    border-radius: 0.4rem;
 }
 
 .admonition > .admonition-title {
@@ -85,7 +85,7 @@ footer {
     padding: 0.75rem 1rem;
     background: rgba(0,0,0,0.03);
     border-bottom: 1px solid rgba(0,0,0,0.125);
-    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+    border-radius: calc(0.4rem - 1px) calc(0.4rem - 1px) 0 0;
     font-size: 1rem;
 }
 
@@ -106,30 +106,30 @@ footer {
 /* Style each kind of admonition. */
 
 .admonition.note, .admonition.note > .admonition-title {
-    border-color: #bee5eb;
+    border-color: #5fabba;
 }
 
 .admonition.note > .admonition-title {
-    background: #d1ecf1;
-    color: #0c5460;
+    background: #6cc3d5;
+    color: #fff;
 }
 
 .admonition.warning, .admonition.warning > .admonition-title {
-    border-color: #fbebc9;
+    border-color: #dfb45a;
 }
 
 .admonition.warning > .admonition-title {
-    background: #fcf1d8;
-    color: #7c5f20;
+    background: #ffce67;
+    color: #fff;
 }
 
 .admonition.danger, .admonition.danger > .admonition-title {
-    border-color: #f6c7c4;
+    border-color: #df6947;
 }
 
 .admonition.danger > .admonition-title {
-    background: #f9d7d5;
-    color: #741d17;
+    background: #ff7851;
+    color: #fff;
 }
 
 /*
@@ -152,7 +152,7 @@ footer {
 }
 
 .bs-sidebar > .card {
-    background-color: #e9ecef !important;
+    background: #f7f7f9 !important;
 }
 
 /* Toggle (vertically flip) sidebar collapse icon */
@@ -228,8 +228,8 @@ h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, h4:hover .head
 }
 
 .dropdown-item.open {
-    color: #16181b;
-    background-color: #f8f9fa;
+    color: #fff;
+    background-color: #F3969A;
 }
 
 .dropdown-submenu > .dropdown-menu {
