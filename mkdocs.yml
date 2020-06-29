@@ -1,0 +1,26 @@
+site_name: Algorithms Sedgewick Solutions
+site_description: Solutions to Algorithms Sedgewick Forth Edition.
+site_author: Theo Despoudis
+
+# Repository
+repo_name: Techwaydotio/algorithms-sedgewick
+repo_url: https://github.com/Techwaydotio/algorithms-sedgewick
+
+# Copyright
+copyright: Built by <a href="http://github.com/techway">Techway</a> &copy; 2020
+
+theme:
+  name: united
+  language: en
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - java
+nav:
+  - Home: index.md
+
+markdown_extensions:
+  - codehilite
+  - toc:
+      permalink: false
+  - pymdownx.superfences
