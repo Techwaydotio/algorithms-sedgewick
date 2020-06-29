@@ -10,7 +10,7 @@ repo_url: https://github.com/Techwaydotio/algorithms-sedgewick
 copyright: Built by <a href="http://github.com/techway">Techway</a> &copy; 2020
 
 theme:
-  name: united
+  name: minty
   language: en
   highlightjs: true
   hljs_languages:
