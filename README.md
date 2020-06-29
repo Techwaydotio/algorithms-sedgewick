@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="#"><img src="./docs/assets/book-cover.png" height="200" title="Algorithms" alt="Algorithms"></a>
+  <a href="https://techwaydotio.github.io/algorithms-sedgewick/"><img src="./docs/assets/book-cover.png" height="200" title="Algorithms" alt="Algorithms"></a>
 </div>
 
 <div align="center">
@@ -16,7 +16,7 @@
 
 ## Getting Started
 
-This **[website](https://walkccc.github.io/CLRS/)** contains nearly complete solutions to the textbook - [**Algorithms, 4th Edition**](https://algs4.cs.princeton.edu/home/), published by [Robert Sedgewick](https://en.wikipedia.org/wiki/Robert_Sedgewick_(computer_scientist)) and Kevin Wayne.
+This **[website](https://techwaydotio.github.io/algorithms-sedgewick/)** contains nearly complete solutions to the textbook - [**Algorithms, 4th Edition**](https://algs4.cs.princeton.edu/home/), published by [Robert Sedgewick](https://en.wikipedia.org/wiki/Robert_Sedgewick_(computer_scientist)) and Kevin Wayne.
 I hope to organize solutions to help people and myself study algorithms. By using [Markdown (.md)](https://en.wikipedia.org/wiki/Markdown) files, this page is much more readable on portable devices.
 
 ## How I Generate the Website?

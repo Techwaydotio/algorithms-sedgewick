@@ -1,6 +1,7 @@
 site_name: Algorithms Sedgewick Solutions
 site_description: Solutions to Algorithms Sedgewick Forth Edition.
 site_author: Theo Despoudis
+site_url: https://techwaydotio.github.io/algorithms-sedgewick/
 
 # Repository
 repo_name: Techwaydotio/algorithms-sedgewick
