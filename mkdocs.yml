@@ -8,17 +8,26 @@ repo_name: Techwaydotio/algorithms-sedgewick
 repo_url: https://github.com/Techwaydotio/algorithms-sedgewick
 
 # Copyright
-copyright: Built by <a href="http://github.com/techway">Techway</a> &copy; 2020
+copyright: Built by <a href="http://github.com/Techwaydotio">Techway.io</a> &copy; 2020
 
 theme:
-  name: minty
+  name: material
   language: en
   highlightjs: true
   hljs_languages:
     - yaml
     - java
+  palette:
+    primary: red
+    accent: blue grey
+  font:
+    text: Ubuntu
+    code: Ubuntu Mono
 nav:
-  - Home: index.md
+  - Preface: index.md
+  - I Foundations:
+      - 1 The Role of Algorithms in Computing:
+          - 1.1 Algorithms: Chap01/1.1.md
 
 extra_css:
   - css/katex.css
@@ -30,7 +39,12 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js
 
 markdown_extensions:
-  - codehilite
+  - admonition
+  - codehilite:
+      guess_lang: false
   - toc:
-      permalink: false
+      permalink: true
   - pymdownx.superfences
+
+plugins:
+  - search

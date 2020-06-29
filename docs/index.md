@@ -9,7 +9,7 @@ I hope to organize solutions to help people and myself study algorithms. By usin
 
 ## How I Generate the Website?
 
-I use the static site generator [MkDocs](http://www.mkdocs.org/) and the theme [Bootwatch](https://mkdocs.github.io/mkdocs-bootswatch/) to build this website.
+I use the static site generator [MkDocs](http://www.mkdocs.org/) and the theme [Material](https://squidfunk.github.io/mkdocs-material) to build this website.
 
 We use [KaTeX](https://katex.org/) for rendering math expressions, which is fast and beautiful.
 
