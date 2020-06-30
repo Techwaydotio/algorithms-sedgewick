@@ -25,9 +25,12 @@ theme:
     code: Ubuntu Mono
 nav:
   - Preface: index.md
-  - I Foundations:
-      - 1 The Role of Algorithms in Computing:
-          - 1.1 Algorithms: Chap01/1.1.md
+  - 1 Fundamentals:
+    - 1.1   Programming Model: Chap01/1.1.md
+    - 1.2   Data Abstraction: Chap01/1.2.md
+    - 1.3   Bags, Queues, and Stacks: Chap01/1.3.md
+    - 1.4   Analysis of Algorithms: Chap01/1.4.md
+    - 1.5   Case Study - Union-Find: Chap01/1.5.md
 
 extra_css:
   - css/katex.css
