@@ -19,11 +19,5 @@ strictly between 0 and 1 and false otherwise.
     public static void main(String[] args) {
         System.out.println(areBetween0and1(1, 2));
         System.out.println(areBetween0and1(0.1, .9));
-
-        int sum = 0;
-        for (int i = 1; i < 1000; i *= 2)
-            for (int j = 0; j < i; j++)
-                sum++;
-        System.out.println(sum);
     }
 }

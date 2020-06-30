@@ -321,6 +321,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1111" class="md-nav__link">
+    1.1.11
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -456,6 +463,13 @@
         <li class="md-nav__item">
   <a href="#118" class="md-nav__link">
     1.1.8
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1111" class="md-nav__link">
+    1.1.11
   </a>
   
 </li>
@@ -665,6 +679,24 @@ Explain each outcome.</p>
 <p>b) It prints 197. First 'b' is converted to int (98) and then 'c' to int (99) so the total is 98 + 99 = 197</p>
 <p>c) It prints 'e'. First ('a' + 4) is converted to int. 'a' is 97 so result is 97 + 4 = 101. 
 Then this int is converted to char which is 'e';</p>
+<h2 id="1111">1.1.11<a class="headerlink" href="#1111" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Write a code fragment that prints the contents of a two-dimensional boolean
+array, using * to represent true and a space to represent false. Include row and column
+numbers.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span> <span class="kt">void</span> <span class="nf">printContents</span><span class="p">(</span><span class="kt">boolean</span><span class="o">[][]</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;row: %d, column: %d = *\n&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;row: %d, column: %d = \n&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
                 
               
               
