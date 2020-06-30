@@ -300,6 +300,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#116" class="md-nav__link">
+    1.1.6
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -414,6 +421,13 @@
         <li class="md-nav__item">
   <a href="#115" class="md-nav__link">
     1.1.5
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#116" class="md-nav__link">
+    1.1.6
   </a>
   
 </li>
@@ -555,6 +569,38 @@ strictly between 0 and 1 and false otherwise.</p>
     <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+
+<h2 id="116">1.1.6<a class="headerlink" href="#116" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>What does the following program print?</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">g</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">15</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">StdOut</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">f</span> <span class="o">+</span> <span class="n">g</span><span class="p">;</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">f</span> <span class="o">-</span> <span class="n">g</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>It prints:
+<div class="highlight"><pre><span></span><code>0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+233
+377
+610
+</code></pre></div></p>
                 
               
               
