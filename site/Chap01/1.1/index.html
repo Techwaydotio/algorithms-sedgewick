@@ -307,6 +307,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#117" class="md-nav__link">
+    1.1.7
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -428,6 +435,13 @@
         <li class="md-nav__item">
   <a href="#116" class="md-nav__link">
     1.1.6
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#117" class="md-nav__link">
+    1.1.7
   </a>
   
 </li>
@@ -601,6 +615,29 @@ strictly between 0 and 1 and false otherwise.</p>
 377
 610
 </code></pre></div></p>
+<h2 id="117">1.1.7<a class="headerlink" href="#117" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Give the value printed by each of the following code fragments:</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">.</span> <span class="kt">double</span> <span class="n">t</span> <span class="o">=</span> <span class="mf">9.0</span><span class="p">;</span>
+ <span class="k">while</span> <span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mf">9.0</span><span class="o">/</span><span class="n">t</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">.001</span><span class="p">)</span>
+ <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mf">9.0</span><span class="o">/</span><span class="n">t</span> <span class="o">+</span> <span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
+ <span class="n">StdOut</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;%.5f\n&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>
+<span class="n">b</span><span class="p">.</span> <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+ <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+ <span class="n">sum</span><span class="o">++</span><span class="p">;</span>
+ <span class="n">StdOut</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">sum</span><span class="p">);</span>
+<span class="n">c</span><span class="p">.</span> <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">i</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">)</span>
+ <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+ <span class="n">sum</span><span class="o">++</span><span class="p">;</span>
+ <span class="n">StdOut</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">sum</span><span class="p">);</span>
+</code></pre></div>
+
+<p>a. 3.00009
+b. 499500
+c. 1023</p>
                 
               
               
