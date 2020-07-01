@@ -1143,8 +1143,16 @@ and the last nonzero remainder in the process is gcd(p, q) with $p ≥ q$</p>
 </blockquote>
 <p>The process in the Euclidean algorithm produces a strictly decreasing sequence of remainders 
 $r0 &gt; r1 &gt; r2 &gt; · · · &gt;rn+1 = 0$</p>
+<p>Hence the algorithm stops after no more than q divisions.</p>
 <p>If $rn$ is the last non-zero remainder in the process, then we have</p>
 <p>$rn = gcd(rn, 0) = gcd(rn−1, rn) = ... = gcd(r0, r1) = gcd(p, q).$</p>
+<p>For the base step $i = 0$, we have $gcd(p, q) = gcd(r0, r1)$ by definition of
+$r0 = a$ and $r1 = b$.</p>
+<p>For each i in 0 ≤ i &lt; n we have</p>
+<p>$gcd(ri, ri+1) = gcd(ri+1, ri+2)$</p>
+<p>This shows that if</p>
+<p>$gcd(a, b) = gcd(ri, ri+1)$, then $gcd(a, b) = gcd(ri+1, ri+2),$</p>
+<p>which is the induction step.</p>
                 
               
               
