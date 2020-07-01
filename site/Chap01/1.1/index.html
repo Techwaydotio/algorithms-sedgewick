@@ -342,6 +342,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1114" class="md-nav__link">
+    1.1.14
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -498,6 +505,13 @@
         <li class="md-nav__item">
   <a href="#1113" class="md-nav__link">
     1.1.13
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1114" class="md-nav__link">
+    1.1.14
   </a>
   
 </li>
@@ -769,6 +783,28 @@ of a two-dimensional array with M rows and N columns.</p>
             <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;row: %d, column: %d = %d\n&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">result</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="1114">1.1.14<a class="headerlink" href="#1114" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Write a static method lg() that takes an int value N as argument and returns
+the largest int not larger than the base-2 logarithm of N. Do not use Math.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span> <span class="kt">int</span> <span class="nf">lg</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">acc</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">acc</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">acc</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
                 
