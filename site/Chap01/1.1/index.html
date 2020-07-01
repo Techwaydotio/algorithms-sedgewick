@@ -356,6 +356,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1116" class="md-nav__link">
+    1.1.16
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -526,6 +533,13 @@
         <li class="md-nav__item">
   <a href="#1115" class="md-nav__link">
     1.1.15
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1116" class="md-nav__link">
+    1.1.16
   </a>
   
 </li>
@@ -839,6 +853,19 @@ a.length.</p>
     <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+
+<h2 id="1116">1.1.16<a class="headerlink" href="#1116" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Give the value of exR1(6):</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">exR1</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+ <span class="k">return</span> <span class="n">exR1</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">n</span> <span class="o">+</span> <span class="n">exR1</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">n</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Result is <code>311361142246</code></p>
                 
               
               
