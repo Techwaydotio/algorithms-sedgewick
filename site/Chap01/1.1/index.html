@@ -363,6 +363,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1118" class="md-nav__link">
+    1.1.18
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -540,6 +547,13 @@
         <li class="md-nav__item">
   <a href="#1116" class="md-nav__link">
     1.1.16
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1118" class="md-nav__link">
+    1.1.18
   </a>
   
 </li>
@@ -866,6 +880,34 @@ a.length.</p>
 </code></pre></div>
 
 <p>Result is <code>311361142246</code></p>
+<h2 id="1118">1.1.18<a class="headerlink" href="#1118" title="Permanent link">&para;</a></h2>
+<p>Consider the following recursive function:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">mystery</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">mystery</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+ <span class="k">return</span> <span class="n">mystery</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>What are the values of mystery(2, 25) and mystery(3, 11)? Given positive integers
+a and b, describe what value mystery(a, b) computes. Answer the same question, but
+replace + with * and replace return 0 with return 1.</p>
+</blockquote>
+<ul>
+<li><code>mystery(2, 25)</code> prints 2 * 25 = 50</li>
+<li><code>mystery(3, 11)</code> prints 3 * 11 = 33</li>
+</ul>
+<p><code>mystery</code> indeed computes $a * b$;</p>
+<p>If we replace + with * and 0 with 1 the fuction becomes:</p>
+<p><div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">mystery</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">mystery</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">mystery</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+This computes the value $a^b$.</p>
                 
               
               
