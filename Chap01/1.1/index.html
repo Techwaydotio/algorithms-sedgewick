@@ -377,6 +377,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1120" class="md-nav__link">
+    1.1.20
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -568,6 +575,13 @@
         <li class="md-nav__item">
   <a href="#1119" class="md-nav__link">
     1.1.19
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1120" class="md-nav__link">
+    1.1.20
   </a>
   
 </li>
@@ -956,6 +970,22 @@ an array.</p>
         <span class="n">memo</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">memo</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">memo</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="o">]</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">memo</span><span class="o">[</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">N</span><span class="o">]</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="1120">1.1.20<a class="headerlink" href="#1120" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Write a recursive static method that computes the value of ln (N !)</p>
+</blockquote>
+<p>Since $n! = 1 × 2 × 3 × ... × n$,</p>
+<p>then $ log(n!) = log(1) + log(2) + log(3) + … + log(n)$.</p>
+<p>Computing this for large values of n is costly. 
+Since we are not asked for an approximation we can just calculate it directly. (using the <code>lg</code> function we implemented earlier)</p>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span> <span class="kt">int</span> <span class="nf">lnProduct</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">lg</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">lnProduct</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
                 
