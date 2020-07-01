@@ -349,6 +349,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1115" class="md-nav__link">
+    1.1.15
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -512,6 +519,13 @@
         <li class="md-nav__item">
   <a href="#1114" class="md-nav__link">
     1.1.14
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1115" class="md-nav__link">
+    1.1.15
   </a>
   
 </li>
@@ -803,6 +817,24 @@ the largest int not larger than the base-2 logarithm of N. Do not use Math.</p>
     <span class="k">while</span> <span class="p">(</span><span class="n">acc</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">acc</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
         <span class="n">result</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="1115">1.1.15<a class="headerlink" href="#1115" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Write a static method histogram() that takes an array a[] of int values and
+an integer M as arguments and returns an array of length M whose ith entry is the number of times the integer i appeared in the argument array. If the values in a[] are all
+between 0 and M–1, the sum of the values in the returned array should be equal to
+a.length.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">histogram</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">M</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">M</span><span class="o">]</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">:</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">result</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
