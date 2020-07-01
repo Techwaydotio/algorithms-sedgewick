@@ -384,6 +384,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1121" class="md-nav__link">
+    1.1.21
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -582,6 +589,13 @@
         <li class="md-nav__item">
   <a href="#1120" class="md-nav__link">
     1.1.20
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1121" class="md-nav__link">
+    1.1.21
   </a>
   
 </li>
@@ -986,6 +1000,26 @@ Since we are not asked for an approximation we can just calculate it directly. (
         <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">lg</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">lnProduct</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="1121">1.1.21<a class="headerlink" href="#1121" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Write a program that reads in lines from standard input with each line containing a name and two integers and then uses printf() to print a table with a column of
+the names, the integers, and the result of dividing the first by the second, accurate to
+three decimal places. You could use a program like this to tabulate batting averages for
+baseball players or grades for students.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Scanner</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">hasNextLine</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="n">input</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">words</span> <span class="o">=</span> <span class="n">line</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">words</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">first</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">words</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+        <span class="kt">double</span> <span class="n">second</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">words</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;Name: %s, Div: %.3f\n&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">first</span> <span class="o">/</span> <span class="n">second</span><span class="p">);</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
                 
