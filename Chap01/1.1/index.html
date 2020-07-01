@@ -370,6 +370,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1119" class="md-nav__link">
+    1.1.19
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -554,6 +561,13 @@
         <li class="md-nav__item">
   <a href="#1118" class="md-nav__link">
     1.1.18
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1119" class="md-nav__link">
+    1.1.19
   </a>
   
 </li>
@@ -908,6 +922,42 @@ replace + with * and replace return 0 with return 1.</p>
 <span class="p">}</span>
 </code></pre></div>
 This computes the value $a^b$.</p>
+<h2 id="1119">1.1.19<a class="headerlink" href="#1119" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Run the following program on your computer:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Fibonacci</span>
+<span class="p">{</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">F</span><span class="p">(</span><span class="kt">int</span> <span class="n">N</span><span class="p">)</span>
+ <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">N</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">N</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="k">return</span> <span class="n">F</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">F</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+ <span class="p">}</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span>
+ <span class="p">{</span>
+ <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">N</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">N</span><span class="o">++</span><span class="p">)</span>
+ <span class="n">StdOut</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">F</span><span class="p">(</span><span class="n">N</span><span class="p">));</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+What is the largest value of N for which this program takes less 1 hour to compute the
+value of F(N)? Develop a better implementation of F(N) that saves computed values in
+an array.</p>
+</blockquote>
+<p>On my machine any values more than <code>50</code> resulted in really slow computation. Here is a better version (using longs):</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">F</span><span class="p">(</span><span class="kt">long</span> <span class="n">N</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">N</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">N</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">long</span><span class="o">[]</span> <span class="n">memo</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">long</span><span class="o">[</span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">]</span><span class="p">;</span>
+    <span class="n">memo</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">memo</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">memo</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">memo</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="n">memo</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">memo</span><span class="o">[</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">N</span><span class="o">]</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
                 
               
               
