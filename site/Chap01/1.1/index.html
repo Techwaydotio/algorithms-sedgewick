@@ -398,6 +398,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1124" class="md-nav__link">
+    1.1.24
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1125" class="md-nav__link">
+    1.1.25
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -610,6 +624,20 @@
         <li class="md-nav__item">
   <a href="#1122" class="md-nav__link">
     1.1.22
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1124" class="md-nav__link">
+    1.1.24
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1125" class="md-nav__link">
+    1.1.25
   </a>
   
 </li>
@@ -1096,6 +1124,27 @@ numbers that are in the whitelist.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+
+<h2 id="1124">1.1.24<a class="headerlink" href="#1124" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Give the sequence of values of p and q that are computed when Euclid’s algorithm is used to compute the greatest common divisor of 105 and 24. Extend the code
+given on page 4 to develop a program Euclid that takes two integers from the command
+line and computes their greatest common divisor, printing out the two arguments for
+each call on the recursive method. Use your program to compute the greatest common
+divisor or 1111111 and 1234567.</p>
+</blockquote>
+<p>Solution trivial...</p>
+<h2 id="1125">1.1.25<a class="headerlink" href="#1125" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Use mathematical induction to prove that Euclid’s algorithm computes the
+greatest common divisor of any pair of nonnegative integers p and q.</p>
+<p>In GCD the process terminates when a remainder of 0 is reached, 
+and the last nonzero remainder in the process is gcd(p, q) with $p ≥ q$</p>
+</blockquote>
+<p>The process in the Euclidean algorithm produces a strictly decreasing sequence of remainders 
+$r0 &gt; r1 &gt; r2 &gt; · · · &gt;rn+1 = 0$</p>
+<p>If $rn$ is the last non-zero remainder in the process, then we have</p>
+<p>$rn = gcd(rn, 0) = gcd(rn−1, rn) = ... = gcd(r0, r1) = gcd(p, q).$</p>
                 
               
               
