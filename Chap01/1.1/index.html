@@ -1066,6 +1066,36 @@ to the recursive method that keeps track of the depth.</p>
     <span class="k">else</span> <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+
+<p>1.1.23 Add to the BinarySearch test client the ability to respond to a second argument: 
++ to print numbers from standard input that are not in the whitelist, - to print
+numbers that are in the whitelist.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">whitelist</span> <span class="o">=</span> <span class="n">readInts</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+    <span class="kt">boolean</span> <span class="n">printNotFromWhitelist</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;+&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printNotFromWhitelist</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;-&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printNotFromWhitelist</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+    <span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">whitelist</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">scanner</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span> <span class="p">{</span> <span class="c1">// Read key, print if not in whitelist.</span>
+        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">scanner</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+        <span class="kt">boolean</span> <span class="n">notFound</span> <span class="o">=</span> <span class="n">rank</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">whitelist</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="c1">// Print numbers from standard input that are not in the whitelist</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">notFound</span> <span class="o">&amp;&amp;</span> <span class="n">printNotFromWhitelist</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Print numbers from standard input that are in the whitelist</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">notFound</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">printNotFromWhitelist</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
                 
               
               
