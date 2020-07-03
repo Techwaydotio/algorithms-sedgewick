@@ -433,6 +433,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1129" class="md-nav__link">
+    1.1.29
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -680,6 +687,13 @@
         <li class="md-nav__item">
   <a href="#1128" class="md-nav__link">
     1.1.28
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1129" class="md-nav__link">
+    1.1.29
   </a>
   
 </li>
@@ -1302,6 +1316,66 @@ same value and remove them from the array</p>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
+</code></pre></div>
+
+<h2 id="1129">1.1.29<a class="headerlink" href="#1129" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Equal keys. Add to BinarySearch a static method rank() that takes a key and
+a sorted array of int values (some of which may be equal) as arguments and returns the
+number of elements that are smaller than the key and a similar method count() that
+returns the number of elements equal to the key. Note : If i and j are the values returned
+by rank(key, a) and count(key, a) respectively, then a[i..i+j-1] are the values in
+the array that are equal to key.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code> <span class="cm">/*</span>
+<span class="cm">     Returns the</span>
+<span class="cm">     number of elements that are smaller than the key</span>
+<span class="cm">      */</span>
+ <span class="kd">static</span> <span class="kt">int</span> <span class="nf">rank</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+     <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">binarySearch</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+     <span class="kt">int</span> <span class="n">lessThanCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+         <span class="kt">int</span> <span class="n">curr</span> <span class="o">=</span> <span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+         <span class="k">while</span> <span class="p">(</span><span class="n">curr</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+             <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">[</span><span class="n">curr</span><span class="o">]</span> <span class="o">!=</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="n">lessThanCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+             <span class="p">}</span>
+             <span class="n">curr</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+     <span class="k">return</span> <span class="n">lessThanCount</span><span class="p">;</span>
+ <span class="p">}</span>
+
+ <span class="cm">/*</span>
+<span class="cm">     Returns the number of elements equal to the key</span>
+<span class="cm">  */</span>
+ <span class="kd">static</span> <span class="kt">int</span> <span class="nf">count</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+     <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">binarySearch</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+     <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+         <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+         <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="n">index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+         <span class="c1">// Check left of index</span>
+         <span class="k">while</span> <span class="p">(</span><span class="n">start</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+             <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">[</span><span class="n">start</span><span class="o">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="n">start</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+                 <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                 <span class="k">break</span><span class="p">;</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+         <span class="c1">// Check right of index</span>
+         <span class="k">while</span> <span class="p">(</span><span class="n">end</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+             <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="o">[</span><span class="n">end</span><span class="o">]</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="n">end</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+                 <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                 <span class="k">break</span><span class="p">;</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+     <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+ <span class="p">}</span>
 </code></pre></div>
                 
               
