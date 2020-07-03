@@ -454,6 +454,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1132-histogram" class="md-nav__link">
+    1.1.32 Histogram.
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -722,6 +729,13 @@
         <li class="md-nav__item">
   <a href="#1131" class="md-nav__link">
     1.1.31
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1132-histogram" class="md-nav__link">
+    1.1.32 Histogram.
   </a>
   
 </li>
@@ -1470,6 +1484,78 @@ draws a gray line connecting them.</p>
                     <span class="n">g</span><span class="p">.</span><span class="na">drawLine</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span> <span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">getX</span><span class="p">(),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">getY</span><span class="p">(),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">points</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">.</span><span class="na">getX</span><span class="p">(),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">points</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">.</span><span class="na">getY</span><span class="p">());</span>
                 <span class="p">}</span>
             <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="1132-histogram">1.1.32 Histogram.<a class="headerlink" href="#1132-histogram" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Suppose that the standard input stream is a sequence of double
+values. Write a program that takes an integer N and two double values l and r from the
+command line and uses StdDraw to plot a histogram of the count of the numbers in the
+standard input stream that fall in each of the N intervals defined by dividing (l , r) into
+N equal-sized intervals.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Ex1132</span> <span class="kd">extends</span> <span class="n">Canvas</span> <span class="p">{</span>
+    <span class="n">ArrayList</span> <span class="n">nums</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">N</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">r</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">l</span><span class="p">;</span>
+
+    <span class="n">Ex1132</span><span class="p">(</span><span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="kt">double</span> <span class="n">r</span><span class="p">,</span> <span class="kt">double</span> <span class="n">l</span><span class="p">,</span> <span class="n">ArrayList</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">N</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">r</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">l</span> <span class="o">=</span> <span class="n">l</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">nums</span> <span class="o">=</span> <span class="n">nums</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+        <span class="kt">double</span> <span class="n">l</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+        <span class="kt">double</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+        <span class="n">ArrayList</span> <span class="n">nums</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">args</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">nums</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="n">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFrame</span><span class="p">(</span><span class="s">&quot;Histogram&quot;</span><span class="p">);</span>
+        <span class="n">Canvas</span> <span class="n">canvas</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ex1132</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">nums</span><span class="p">);</span>
+        <span class="n">canvas</span><span class="p">.</span><span class="na">setSize</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+        <span class="n">frame</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">canvas</span><span class="p">);</span>
+        <span class="n">frame</span><span class="p">.</span><span class="na">pack</span><span class="p">();</span>
+        <span class="n">frame</span><span class="p">.</span><span class="na">setVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paint</span><span class="p">(</span><span class="n">Graphics</span> <span class="n">g</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">400</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>
+        <span class="c1">// Draw a horizontal base line</span>
+        <span class="n">g</span><span class="p">.</span><span class="na">drawLine</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">45</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">10</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">45</span><span class="p">);</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">N</span><span class="o">]</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Iterator</span> <span class="n">i</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">nums</span><span class="p">.</span><span class="na">iterator</span><span class="p">();</span> <span class="n">i</span><span class="p">.</span><span class="na">hasNext</span><span class="p">();</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">i</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+            <span class="kt">int</span> <span class="n">intervalIndex</span> <span class="o">=</span> <span class="n">number</span> <span class="o">/</span> <span class="n">N</span><span class="p">;</span>
+            <span class="n">count</span><span class="o">[</span><span class="n">intervalIndex</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Find the maximum count. The maximum count has the highest bar</span>
+        <span class="kt">int</span> <span class="n">maxCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">maxCount</span> <span class="o">&lt;</span> <span class="n">count</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span>
+                <span class="n">maxCount</span> <span class="o">=</span> <span class="n">count</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Find the bar height</span>
+            <span class="kt">int</span> <span class="n">barHeight</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(((</span><span class="kt">double</span><span class="p">)</span> <span class="n">count</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">/</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">maxCount</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="mi">55</span><span class="p">));</span>
+
+
+            <span class="c1">// Display a bar (i.e. rectangle)</span>
+            <span class="n">g</span><span class="p">.</span><span class="na">drawRect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">45</span> <span class="o">-</span> <span class="n">barHeight</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">barHeight</span><span class="p">);</span>
+            <span class="c1">// Move x for displaying the next character</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="n">N</span><span class="p">;</span>
+
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
