@@ -15,7 +15,7 @@ public class Ex1133 {
         }
         for(int i = 0; i < r1; i++) {
             for (int j = 0; j < q2; j++) {
-                for (int k = 0; k < c1; k++) {
+                for (int k = 0; k < q1; k++) {
                     product[i][j] += firstMatrix[i][k] * secondMatrix[k][j];
                 }
             }

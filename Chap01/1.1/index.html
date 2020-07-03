@@ -1665,6 +1665,67 @@ input:
    1. Print the average of the N numbers
    2. Print the N numbers in random order
    3. Print the N numbers in increasing order</p>
+<p>1.1.35 </p>
+<blockquote>
+<p>Dice simulation. The following code computes the exact probability distribution for the sum of two dice:</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">SIDES</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+<span class="kt">double</span><span class="o">[]</span> <span class="n">dist</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="mi">2</span><span class="o">*</span><span class="n">SIDES</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">SIDES</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+ <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">SIDES</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+ <span class="n">dist</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="o">]</span> <span class="o">+=</span> <span class="mf">1.0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="o">*</span><span class="n">SIDES</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+ <span class="n">dist</span><span class="o">[</span><span class="n">k</span><span class="o">]</span> <span class="o">/=</span> <span class="mf">36.0</span><span class="p">;</span>
+</code></pre></div>
+
+<blockquote>
+<p>The value dist[i] is the probability that the dice sum to k. Run experiments to validate this calculation simulating N dice throws, keeping track of the frequencies of occurrence of each value when you compute the sum of two random integers between 1
+and 6. How large does N have to be before your empirical results match the exact results
+to three decimal places?</p>
+</blockquote>
+<p>Using the code below:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">areAllTrue</span><span class="p">(</span><span class="kt">boolean</span><span class="o">[]</span> <span class="n">array</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">boolean</span> <span class="n">b</span><span class="p">:</span> <span class="n">array</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">b</span><span class="p">)</span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">allSimilar</span><span class="p">(</span><span class="kt">double</span><span class="o">[]</span> <span class="n">distr</span><span class="p">,</span> <span class="kt">double</span><span class="o">[]</span> <span class="n">freq</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">boolean</span><span class="o">[]</span> <span class="n">equal</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">distr</span><span class="p">.</span><span class="na">length</span><span class="o">]</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">distr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">BigDecimal</span> <span class="n">aa</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="p">(</span><span class="n">distr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+        <span class="n">BigDecimal</span> <span class="n">bb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="p">(</span><span class="n">freq</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+        <span class="n">aa</span> <span class="o">=</span> <span class="n">aa</span><span class="p">.</span><span class="na">setScale</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">RoundingMode</span><span class="p">.</span><span class="na">HALF_EVEN</span><span class="p">);</span>
+        <span class="n">bb</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="na">setScale</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">RoundingMode</span><span class="p">.</span><span class="na">HALF_EVEN</span><span class="p">);</span>
+        <span class="n">equal</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">aa</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">bb</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">equal</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">areAllTrue</span><span class="p">(</span><span class="n">equal</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">double</span><span class="o">[]</span> <span class="n">distr</span> <span class="o">=</span> <span class="n">diceDistr</span><span class="p">();</span>
+    <span class="kt">double</span><span class="o">[]</span> <span class="n">freq</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="mi">13</span><span class="o">]</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">trials</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">allSimilar</span><span class="p">(</span><span class="n">distr</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">trials</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="n">e6</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">trials</span><span class="p">);</span>
+        <span class="n">trials</span> <span class="o">+=</span> <span class="mi">1000</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">trials</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">randomNum1</span> <span class="o">=</span> <span class="n">ThreadLocalRandom</span><span class="p">.</span><span class="na">current</span><span class="p">().</span><span class="na">nextInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">randomNum2</span> <span class="o">=</span> <span class="n">ThreadLocalRandom</span><span class="p">.</span><span class="na">current</span><span class="p">().</span><span class="na">nextInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+            <span class="n">freq</span><span class="o">[</span><span class="n">randomNum1</span> <span class="o">+</span> <span class="n">randomNum2</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">freq</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">freq</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">/=</span> <span class="n">trials</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">trials</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>I managed to completed after 297000 trials. It also depends on the rounding mode.</p>
                 
               
               
