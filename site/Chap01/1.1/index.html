@@ -455,8 +455,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1132-histogram" class="md-nav__link">
-    1.1.32 Histogram.
+  <a href="#1132" class="md-nav__link">
+    1.1.32
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1133" class="md-nav__link">
+    1.1.33
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1134" class="md-nav__link">
+    1.1.34
   </a>
   
 </li>
@@ -734,8 +748,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1132-histogram" class="md-nav__link">
-    1.1.32 Histogram.
+  <a href="#1132" class="md-nav__link">
+    1.1.32
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1133" class="md-nav__link">
+    1.1.33
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1134" class="md-nav__link">
+    1.1.34
   </a>
   
 </li>
@@ -1489,14 +1517,12 @@ draws a gray line connecting them.</p>
 <span class="p">}</span>
 </code></pre></div>
 
-<h2 id="1132-histogram">1.1.32 Histogram.<a class="headerlink" href="#1132-histogram" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Suppose that the standard input stream is a sequence of double
+<h2 id="1132">1.1.32<a class="headerlink" href="#1132" title="Permanent link">&para;</a></h2>
+<p>Histogram. Suppose that the standard input stream is a sequence of double
 values. Write a program that takes an integer N and two double values l and r from the
 command line and uses StdDraw to plot a histogram of the count of the numbers in the
 standard input stream that fall in each of the N intervals defined by dividing (l , r) into
 N equal-sized intervals.</p>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Ex1132</span> <span class="kd">extends</span> <span class="n">Canvas</span> <span class="p">{</span>
     <span class="n">ArrayList</span> <span class="n">nums</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">N</span><span class="p">;</span>
@@ -1549,17 +1575,47 @@ N equal-sized intervals.</p>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// Find the bar height</span>
             <span class="kt">int</span> <span class="n">barHeight</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(((</span><span class="kt">double</span><span class="p">)</span> <span class="n">count</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">/</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">maxCount</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="mi">55</span><span class="p">));</span>
-
-
             <span class="c1">// Display a bar (i.e. rectangle)</span>
             <span class="n">g</span><span class="p">.</span><span class="na">drawRect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">45</span> <span class="o">-</span> <span class="n">barHeight</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">barHeight</span><span class="p">);</span>
             <span class="c1">// Move x for displaying the next character</span>
             <span class="n">x</span> <span class="o">+=</span> <span class="n">N</span><span class="p">;</span>
-
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+
+<h2 id="1133">1.1.33<a class="headerlink" href="#1133" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Matrix library. Write a library Matrix that implements the following API:</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Matrix</span>
+<span class="kd">static</span> <span class="kt">double</span> <span class="nf">dot</span><span class="p">(</span><span class="kt">double</span><span class="o">[]</span> <span class="n">x</span><span class="p">,</span> <span class="kt">double</span><span class="o">[]</span> <span class="n">y</span><span class="p">)</span> <span class="n">vector</span> <span class="n">dot</span> <span class="n">product</span>
+<span class="kd">static</span> <span class="kt">double</span><span class="o">[][]</span> <span class="nf">mult</span><span class="p">(</span><span class="kt">double</span><span class="o">[][]</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span><span class="o">[][]</span> <span class="n">b</span><span class="p">)</span> <span class="n">matrix</span><span class="o">-</span><span class="n">matrix</span> <span class="n">product</span>
+<span class="kd">static</span> <span class="kt">double</span><span class="o">[][]</span> <span class="nf">transpose</span><span class="p">(</span><span class="kt">double</span><span class="o">[][]</span> <span class="n">a</span><span class="p">)</span> <span class="n">transpose</span>
+<span class="kd">static</span> <span class="kt">double</span><span class="o">[]</span> <span class="nf">mult</span><span class="p">(</span><span class="kt">double</span><span class="o">[][]</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span><span class="o">[]</span> <span class="n">x</span><span class="p">)</span> <span class="n">matrix</span><span class="o">-</span><span class="n">vector</span> <span class="n">product</span>
+<span class="kd">static</span> <span class="kt">double</span><span class="o">[]</span> <span class="nf">mult</span><span class="p">(</span><span class="kt">double</span><span class="o">[]</span> <span class="n">y</span><span class="p">,</span> <span class="kt">double</span><span class="o">[][]</span> <span class="n">a</span><span class="p">)</span> <span class="n">vector</span><span class="o">-</span><span class="n">matrix</span> <span class="n">product</span>
+</code></pre></div>
+
+<blockquote>
+<p>Develop a test client that reads values from standard input and tests all the methods.</p>
+</blockquote>
+<h2 id="1134">1.1.34<a class="headerlink" href="#1134" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Filtering. Which of the following require saving all the values from standard
+input (in an array, say), and which could be implemented as a filter using only a fixed
+number of variables and arrays of fixed size (not dependent on N)? For each, the input
+comes from standard input and consists of N real numbers between 0 and 1.</p>
+</blockquote>
+<ul>
+<li>Print the maximum and minimum numbers.</li>
+<li>Print the median of the numbers.</li>
+<li>Print the k th smallest value, for k less than 100.</li>
+<li>Print the sum of the squares of the numbers.</li>
+<li>Print the average of the N numbers.</li>
+<li>Print the percentage of numbers greater than the average.</li>
+<li>Print the N numbers in increasing order.</li>
+<li>Print the N numbers in random order.</li>
+</ul>
                 
               
               
