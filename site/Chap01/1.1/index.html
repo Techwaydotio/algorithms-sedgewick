@@ -440,6 +440,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1130" class="md-nav__link">
+    1.1.30
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -694,6 +701,13 @@
         <li class="md-nav__item">
   <a href="#1129" class="md-nav__link">
     1.1.29
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1130" class="md-nav__link">
+    1.1.30
   </a>
   
 </li>
@@ -1376,6 +1390,24 @@ the array that are equal to key.</p>
      <span class="p">}</span>
      <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
  <span class="p">}</span>
+</code></pre></div>
+
+<h2 id="1130">1.1.30<a class="headerlink" href="#1130" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Array exercise. Write a code fragment that creates an N-by-N boolean array
+a[][] such that a[i][j] is true if i and j are relatively prime (have no common factors), and false otherwise. </p>
+</blockquote>
+<p>If the greatest common divisor (gcd) of 2 numbers a and b is 1 (i.e. gcd(a, b) = 1) 
+then a and b are relatively prime.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span> <span class="kt">boolean</span><span class="o">[][]</span> <span class="nf">relPrimeTable</span><span class="p">(</span><span class="kt">int</span> <span class="n">N</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">boolean</span><span class="o">[][]</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">N</span><span class="o">][</span><span class="n">N</span><span class="o">]</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">result</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">gcd</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
                 
               
