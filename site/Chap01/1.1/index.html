@@ -1715,8 +1715,6 @@ to three decimal places?</p>
         <span class="n">bb</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="na">setScale</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">RoundingMode</span><span class="p">.</span><span class="na">HALF_EVEN</span><span class="p">);</span>
         <span class="n">equal</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">aa</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">bb</span><span class="p">);</span>
     <span class="p">}</span>
-
-    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">equal</span><span class="p">));</span>
     <span class="k">return</span> <span class="n">areAllTrue</span><span class="p">(</span><span class="n">equal</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -1726,7 +1724,6 @@ to three decimal places?</p>
     <span class="kt">double</span><span class="o">[]</span> <span class="n">freq</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="mi">13</span><span class="o">]</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">trials</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">allSimilar</span><span class="p">(</span><span class="n">distr</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">trials</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="n">e6</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">trials</span><span class="p">);</span>
         <span class="n">trials</span> <span class="o">+=</span> <span class="mi">1000</span><span class="p">;</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">trials</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">int</span> <span class="n">randomNum1</span> <span class="o">=</span> <span class="n">ThreadLocalRandom</span><span class="p">.</span><span class="na">current</span><span class="p">().</span><span class="na">nextInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
@@ -1741,7 +1738,7 @@ to three decimal places?</p>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>I managed to completed after 297000 trials. It also depends on the rounding mode.</p>
+<p>I managed to complete it after 297000 trials. It also depends on the rounding mode.</p>
                 
               
               
