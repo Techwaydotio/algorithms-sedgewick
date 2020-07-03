@@ -447,6 +447,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1131" class="md-nav__link">
+    1.1.31
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -708,6 +715,13 @@
         <li class="md-nav__item">
   <a href="#1130" class="md-nav__link">
     1.1.30
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1131" class="md-nav__link">
+    1.1.31
   </a>
   
 </li>
@@ -1407,6 +1421,57 @@ then a and b are relatively prime.</p>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="1131">1.1.31<a class="headerlink" href="#1131" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Random connections. Write a program that takes as command-line arguments
+an integer N and a double value p (between 0 and 1), plots N equally spaced dots of size
+.05 on the circumference of a circle, and then, with probability p for each pair of points,
+draws a gray line connecting them.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Ex1131</span> <span class="kd">extends</span> <span class="n">Canvas</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">N</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">p</span><span class="p">;</span>
+
+    <span class="n">Ex1131</span><span class="p">(</span><span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="kt">double</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">N</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+        <span class="kt">double</span> <span class="n">p</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+
+        <span class="n">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JFrame</span><span class="p">(</span><span class="s">&quot;Random Connections&quot;</span><span class="p">);</span>
+        <span class="n">Canvas</span> <span class="n">canvas</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Ex1131</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+        <span class="n">canvas</span><span class="p">.</span><span class="na">setSize</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+        <span class="n">frame</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">canvas</span><span class="p">);</span>
+        <span class="n">frame</span><span class="p">.</span><span class="na">pack</span><span class="p">();</span>
+        <span class="n">frame</span><span class="p">.</span><span class="na">setVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">paint</span><span class="p">(</span><span class="n">Graphics</span> <span class="n">g</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">;</span>
+        <span class="n">Point2D</span><span class="o">[]</span> <span class="n">points</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point2D</span><span class="p">.</span><span class="na">Double</span><span class="o">[</span><span class="n">N</span><span class="o">]</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">angle</span> <span class="o">=</span> <span class="n">angle</span> <span class="o">+</span> <span class="n">Math</span><span class="p">.</span><span class="na">PI</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span>
+            <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">Math</span><span class="p">.</span><span class="na">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">+</span> <span class="mi">200</span><span class="p">;</span>
+            <span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">Math</span><span class="p">.</span><span class="na">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">+</span> <span class="mi">200</span><span class="p">;</span>
+            <span class="n">g</span><span class="p">.</span><span class="na">fillOval</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span> <span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">y</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+            <span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point2D</span><span class="p">.</span><span class="na">Double</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">g</span><span class="p">.</span><span class="na">setColor</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="na">GRAY</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">g</span><span class="p">.</span><span class="na">drawLine</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span> <span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">getX</span><span class="p">(),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">getY</span><span class="p">(),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">points</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">.</span><span class="na">getX</span><span class="p">(),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">points</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">.</span><span class="na">getY</span><span class="p">());</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
                 
