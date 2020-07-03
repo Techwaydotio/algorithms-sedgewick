@@ -482,6 +482,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1136" class="md-nav__link">
+    1.1.36
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1137" class="md-nav__link">
+    1.1.37
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1138" class="md-nav__link">
+    1.1.38
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1139" class="md-nav__link">
+    1.1.39
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -778,6 +806,34 @@
         <li class="md-nav__item">
   <a href="#1135" class="md-nav__link">
     1.1.35
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1136" class="md-nav__link">
+    1.1.36
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1137" class="md-nav__link">
+    1.1.37
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1138" class="md-nav__link">
+    1.1.38
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1139" class="md-nav__link">
+    1.1.39
   </a>
   
 </li>
@@ -1739,6 +1795,62 @@ to three decimal places?</p>
 </code></pre></div>
 
 <p>I managed to complete it after 297000 trials. It also depends on the rounding mode.</p>
+<h2 id="1136">1.1.36<a class="headerlink" href="#1136" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Empirical shuffle check. Run computational experiments to check that our
+shuffling code on page 32 works as advertised. Write a program ShuffleTest that takes
+command-line arguments M and N, does N shuffles of an array of size M that is initialized with a[i] = i before each shuffle, and prints an M-by-M table such that row i
+gives the number of times i wound up in position j for all j. All entries in the array
+should be close to N/M.</p>
+</blockquote>
+<h2 id="1137">1.1.37<a class="headerlink" href="#1137" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Bad shuffling. Suppose that you choose a random integer between 0 and N-1
+in our shuffling code instead of one between i and N-1. Show that the resulting order is
+not equally likely to be one of the N! possibilities. Run the test of the previous exercise
+for this version.</p>
+</blockquote>
+<h2 id="1138">1.1.38<a class="headerlink" href="#1138" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Binary search versus brute-force search. Write a program BruteForceSearch
+that uses the brute-force search method given on page 48 and compare its running time
+on your computer with that of BinarySearch for largeW.txt and largeT.txt. </p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span> <span class="kt">int</span> <span class="nf">bruteForceSearch</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">k</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span><span class="o">[]</span> <span class="n">whitelist</span> <span class="o">=</span> <span class="n">readInts</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+    <span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">whitelist</span><span class="p">);</span>
+
+    <span class="n">Scanner</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+    <span class="kt">long</span> <span class="n">startTime</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">binarySearch</span><span class="p">(</span><span class="n">whitelist</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kt">long</span> <span class="n">endTime</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
+    <span class="kt">long</span> <span class="n">totalTime</span> <span class="o">=</span> <span class="n">endTime</span> <span class="o">-</span> <span class="n">startTime</span><span class="p">;</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">totalTime</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="1139">1.1.39<a class="headerlink" href="#1139" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Random matches. Write a BinarySearch client that takes an int value T as
+command-line argument and runs T trials of the following experiment for N = 103, 104,
+105, and 106: generate two arrays of N randomly generated positive six-digit int values,
+and find the number of values that appear in both arrays. Print a table giving the average
+value of this quantity over the T trials for each value of N. </p>
+</blockquote>
                 
               
               
