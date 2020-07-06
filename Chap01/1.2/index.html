@@ -67,6 +67,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#121" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -248,9 +253,40 @@
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        1.2   Data Abstraction
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
     <a href="./" title="1.2 Data Abstraction" class="md-nav__link md-nav__link--active">
       1.2   Data Abstraction
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    1.2.1
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -303,6 +339,36 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    1.2.1
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -318,7 +384,44 @@
                 
                   <h1>1.2   Data Abstraction</h1>
                 
-                
+                <h2 id="121">1.2.1<a class="headerlink" href="#121" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Write a Point2D client that takes an integer value N from the command line,
+generates N random points in the unit square, and computes the distance separating
+the closest pair of points.</p>
+</blockquote>
+<p>Brute force approach:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Ex121</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">N</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+        <span class="n">Point2D</span><span class="p">.</span><span class="na">Double</span><span class="o">[]</span> <span class="n">points</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point2D</span><span class="p">.</span><span class="na">Double</span><span class="o">[</span><span class="n">N</span><span class="o">]</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">ThreadLocalRandom</span><span class="p">.</span><span class="na">current</span><span class="p">().</span><span class="na">nextDouble</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+            <span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="n">ThreadLocalRandom</span><span class="p">.</span><span class="na">current</span><span class="p">().</span><span class="na">nextDouble</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
+            <span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point2D</span><span class="p">.</span><span class="na">Double</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">findClosestPairsBruteForce</span><span class="p">(</span><span class="n">points</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="kd">static</span> <span class="kt">double</span> <span class="nf">dist</span><span class="p">(</span><span class="n">Point2D</span> <span class="n">p1</span><span class="p">,</span> <span class="n">Point2D</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Math</span><span class="p">.</span><span class="na">sqrt</span><span class="p">((</span><span class="n">p1</span><span class="p">.</span><span class="na">getX</span><span class="p">()</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="na">getY</span><span class="p">())</span> <span class="o">*</span> <span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="na">getX</span><span class="p">()</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="na">getX</span><span class="p">())</span> <span class="o">+</span>
+                <span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="na">getY</span><span class="p">()</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="na">getY</span><span class="p">())</span> <span class="o">*</span> <span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="na">getY</span><span class="p">()</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="na">getY</span><span class="p">())</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">static</span> <span class="kt">double</span> <span class="nf">findClosestPairsBruteForce</span><span class="p">(</span><span class="n">Point2D</span><span class="o">[]</span> <span class="n">points</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">min</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">points</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">points</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">dist</span><span class="p">(</span><span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span> <span class="n">points</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">min</span><span class="p">)</span>
+                    <span class="n">min</span> <span class="o">=</span> <span class="n">dist</span><span class="p">(</span><span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span> <span class="n">points</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">min</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
                 
               
               
