@@ -284,6 +284,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#122" class="md-nav__link">
+    1.2.2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#123" class="md-nav__link">
+    1.2.3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#126" class="md-nav__link">
+    1.2.6
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -362,6 +383,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#122" class="md-nav__link">
+    1.2.2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#123" class="md-nav__link">
+    1.2.3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#126" class="md-nav__link">
+    1.2.6
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -420,6 +462,52 @@ the closest pair of points.</p>
                     <span class="n">min</span> <span class="o">=</span> <span class="n">dist</span><span class="p">(</span><span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span> <span class="n">points</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">);</span>
         <span class="k">return</span> <span class="n">min</span><span class="p">;</span>
     <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="122">1.2.2<a class="headerlink" href="#122" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Write an Interval1D client that takes an int value N as command-line argument, reads N intervals (each defined by a pair of double values) from standard input,
+and prints all pairs that intersect.</p>
+</blockquote>
+<p><strong>TODO</strong></p>
+<h2 id="123">1.2.3<a class="headerlink" href="#123" title="Permanent link">&para;</a></h2>
+<blockquote>
+<blockquote>
+<p>Write an Interval2D client that takes command-line arguments N, min, and max
+and generates N random 2D intervals whose width and height are uniformly distributed
+between min and max in the unit square. Draw them on StdDraw and print the number
+of pairs of intervals that intersect and the number of intervals that are contained in one
+another.</p>
+</blockquote>
+</blockquote>
+<p><strong>TODO</strong></p>
+<h2 id="126">1.2.6<a class="headerlink" href="#126" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>A string s is a circular rotation of a string t if it matches when the characters
+are circularly shifted by any number of positions; e.g., ACTGACG is a circular shift of
+TGACGAC, and vice versa. Detecting this condition is important in the study of genomic
+sequences. Write a program that checks whether two given strings s and t are circular
+shifts of one another. Hint : The solution is a one-liner with indexOf(), length(), and
+string concatenation.</p>
+</blockquote>
+<p>Solution is taken from this article:</p>
+<p>https://javarevisited.blogspot.com/2017/07/2-ways-to-check-if-one-string-is-rotation-of-another-String.html</p>
+<p>Concatenate two string s1 and s2 using + operator. You can also use StringBuffer or StringBuilder if you want to, but + looks nice and clean and it also uses StringBuilder internally (see Effective Java).
+Check if the rotated version is present in the concatenated version by using contains() (or indexOf) method.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isCircular</span><span class="p">(</span><span class="n">String</span> <span class="n">a</span><span class="p">,</span> <span class="n">String</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">b</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">!=</span> <span class="n">b</span><span class="p">.</span><span class="na">length</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">String</span> <span class="n">combined</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">combined</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
                 
