@@ -312,6 +312,76 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#129" class="md-nav__link">
+    1.2.9
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1210" class="md-nav__link">
+    1.2.10
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1211" class="md-nav__link">
+    1.2.11
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1212" class="md-nav__link">
+    1.2.12
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1213" class="md-nav__link">
+    1.2.13
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1214" class="md-nav__link">
+    1.2.14
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1216" class="md-nav__link">
+    1.2.16
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1217" class="md-nav__link">
+    1.2.17
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1218" class="md-nav__link">
+    1.2.18
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1219" class="md-nav__link">
+    1.2.19
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -418,6 +488,76 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#129" class="md-nav__link">
+    1.2.9
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1210" class="md-nav__link">
+    1.2.10
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1211" class="md-nav__link">
+    1.2.11
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1212" class="md-nav__link">
+    1.2.12
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1213" class="md-nav__link">
+    1.2.13
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1214" class="md-nav__link">
+    1.2.14
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1216" class="md-nav__link">
+    1.2.16
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1217" class="md-nav__link">
+    1.2.17
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1218" class="md-nav__link">
+    1.2.18
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1219" class="md-nav__link">
+    1.2.19
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -487,13 +627,11 @@ and prints all pairs that intersect.</p>
 <p><strong>TODO</strong></p>
 <h2 id="123">1.2.3<a class="headerlink" href="#123" title="Permanent link">&para;</a></h2>
 <blockquote>
-<blockquote>
 <p>Write an Interval2D client that takes command-line arguments N, min, and max
 and generates N random 2D intervals whose width and height are uniformly distributed
 between min and max in the unit square. Draw them on StdDraw and print the number
 of pairs of intervals that intersect and the number of intervals that are contained in one
 another.</p>
-</blockquote>
 </blockquote>
 <p><strong>TODO</strong></p>
 <h2 id="126">1.2.6<a class="headerlink" href="#126" title="Permanent link">&para;</a></h2>
@@ -536,6 +674,132 @@ string concatenation.</p>
 </code></pre></div>
 
 <p>It reverses the provided string. For example <code>ABCDEFG</code> becomes <code>GFEDCBA</code>.</p>
+<h2 id="129">1.2.9<a class="headerlink" href="#129" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Instrument BinarySearch (page 47) to use a Counter to count the total number
+of keys examined during all searches and then print the total after all searches are complete. 
+Hint : Create a Counter in main() and pass it as an argument to rank().</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">rank</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="p">,</span> <span class="n">Counter</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">rank</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">rank</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">lo</span><span class="p">,</span> <span class="kt">int</span> <span class="n">hi</span><span class="p">,</span> <span class="n">Counter</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">lo</span> <span class="o">&gt;</span> <span class="n">hi</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">lo</span> <span class="o">+</span> <span class="p">(</span><span class="n">hi</span> <span class="o">-</span> <span class="n">lo</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">[</span><span class="n">mid</span><span class="o">]</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">c</span><span class="p">.</span><span class="na">increment</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">rank</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">[</span><span class="n">mid</span><span class="o">]</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">c</span><span class="p">.</span><span class="na">increment</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">rank</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="1210">1.2.10<a class="headerlink" href="#1210" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Develop a class VisualCounter that allows both increment and decrement
+operations. Take two arguments N and max in the constructor, where N specifies the
+maximum number of operations and max specifies the maximum absolute value for
+the counter. As a side effect, create a plot showing the value of the counter each time its
+tally changes.</p>
+</blockquote>
+<p><strong>TODO</strong></p>
+<h2 id="1211">1.2.11<a class="headerlink" href="#1211" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Develop an implementation SmartDate of our Date API that raises an exception if the date is not legal.</p>
+</blockquote>
+<p><strong>TODO</strong></p>
+<h2 id="1212">1.2.12<a class="headerlink" href="#1212" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Add a method dayOfTheWeek() to SmartDate that returns a String value
+Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday, giving the appropriate day of the week for the date. You may assume that the date is in the 21st
+century</p>
+</blockquote>
+<p><strong>TODO</strong></p>
+<h2 id="1213">1.2.13<a class="headerlink" href="#1213" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Using our implementation of Date as a model (page 91), develop an implementation of Transaction.</p>
+</blockquote>
+<p><strong>TODO</strong></p>
+<h2 id="1214">1.2.14<a class="headerlink" href="#1214" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Using our implementation of equals() in Date as a model (page 103), develop
+implementations of equals() for Transaction.</p>
+</blockquote>
+<p><strong>TODO</strong></p>
+<h2 id="1216">1.2.16<a class="headerlink" href="#1216" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Rational numbers. Implement an immutable data type Rational for rational
+numbers that supports addition, subtraction, multiplication, and division.
+public class Rational</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">Rational</span><span class="p">(</span><span class="kt">int</span> <span class="n">numerator</span><span class="p">.</span> <span class="kt">int</span> <span class="n">denominator</span><span class="p">)</span>
+<span class="n">Rational</span> <span class="nf">plus</span><span class="p">(</span><span class="n">Rational</span> <span class="n">b</span><span class="p">)</span> <span class="n">sum</span> <span class="n">of</span> <span class="k">this</span> <span class="n">number</span> <span class="n">and</span> <span class="n">b</span>
+<span class="n">Rational</span> <span class="nf">minus</span><span class="p">(</span><span class="n">Rational</span> <span class="n">b</span><span class="p">)</span> <span class="n">difference</span> <span class="n">of</span> <span class="k">this</span> <span class="n">number</span> <span class="n">and</span> <span class="n">b</span>
+<span class="n">Rational</span> <span class="nf">times</span><span class="p">(</span><span class="n">Rational</span> <span class="n">b</span><span class="p">)</span> <span class="n">product</span> <span class="n">of</span> <span class="k">this</span> <span class="n">number</span> <span class="n">and</span> <span class="n">b</span>
+<span class="n">Rational</span> <span class="nf">divides</span><span class="p">(</span><span class="n">Rational</span> <span class="n">b</span><span class="p">)</span> <span class="n">quotient</span> <span class="n">of</span> <span class="k">this</span> <span class="n">number</span> <span class="n">and</span> <span class="n">b</span>
+<span class="kt">boolean</span> <span class="nf">equals</span><span class="p">(</span><span class="n">Rational</span> <span class="n">that</span><span class="p">)</span> <span class="n">is</span> <span class="k">this</span> <span class="n">number</span> <span class="n">equal</span> <span class="n">to</span> <span class="n">that</span> <span class="o">?</span>
+<span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="n">string</span> <span class="n">representation</span>
+</code></pre></div>
+
+<blockquote>
+<p>You do not have to worry about testing for overflow (see Exercise 1.2.17), but use as
+instance variables two long values that represent the numerator and denominator to
+limit the possibility of overflow. Use Euclid’s algorithm (see page 4) to ensure that the
+numerator and denominator never have any common factors. Include a test client that
+exercises all of your methods.</p>
+</blockquote>
+<h2 id="1217">1.2.17<a class="headerlink" href="#1217" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Robust implementation of rational numbers. Use assertions to develop an implementation of 
+Rational (see Exercise 1.2.16) that is immune to overflow.</p>
+</blockquote>
+<h2 id="1218">1.2.18<a class="headerlink" href="#1218" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Variance for accumulator. Validate that the following code, which adds the
+methods var() and stddev() to Accumulator, computes both the mean and variance
+of the numbers presented as arguments to addDataValue():</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Accumulator</span>
+<span class="p">{</span>
+ <span class="kd">private</span> <span class="kt">double</span> <span class="n">m</span><span class="p">;</span>
+ <span class="kd">private</span> <span class="kt">double</span> <span class="n">s</span><span class="p">;</span>
+ <span class="kd">private</span> <span class="kt">int</span> <span class="n">N</span><span class="p">;</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addDataValue</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+ <span class="p">{</span>
+ <span class="n">N</span><span class="o">++</span><span class="p">;</span>
+ <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">m</span><span class="p">);</span>
+ <span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="kd">public</span> <span class="kt">double</span> <span class="nf">mean</span><span class="p">()</span>
+ <span class="p">{</span> <span class="k">return</span> <span class="n">m</span><span class="p">;</span> <span class="p">}</span>
+ <span class="kd">public</span> <span class="kt">double</span> <span class="nf">var</span><span class="p">()</span>
+ <span class="p">{</span> <span class="k">return</span> <span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span> <span class="p">}</span>
+ <span class="kd">public</span> <span class="kt">double</span> <span class="nf">stddev</span><span class="p">()</span>
+ <span class="p">{</span> <span class="k">return</span> <span class="n">Math</span><span class="p">.</span><span class="na">sqrt</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">var</span><span class="p">());</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>This implementation is less susceptible to roundoff error 
+than the straightforward implementation based on saving the sum of the squares of the numbers.</p>
+</blockquote>
+<h2 id="1219">1.2.19<a class="headerlink" href="#1219" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Parsing. Develop the parse constructors for your Date and Transaction implementations of Exercise 1.2.13 that take a single String argument to specify the
+initialization values, using the formats given in the table below.
+Partial solution:</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="nf">Date</span><span class="p">(</span><span class="n">String</span> <span class="n">date</span><span class="p">)</span>
+<span class="p">{</span>
+ <span class="n">String</span><span class="o">[]</span> <span class="n">fields</span> <span class="o">=</span> <span class="n">date</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+ <span class="n">month</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">fields</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+ <span class="n">day</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">fields</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+ <span class="n">year</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">fields</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
                 
               
               
