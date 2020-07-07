@@ -705,7 +705,41 @@ maximum number of operations and max specifies the maximum absolute value for
 the counter. As a side effect, create a plot showing the value of the counter each time its
 tally changes.</p>
 </blockquote>
-<p><strong>TODO</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span> <span class="kd">class</span> <span class="nc">VisualCounter</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span> <span class="c1">// counter name</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// current value</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// maximum number of operations</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// maximum absolute value for the counter</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">opCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// current operations count</span>
+
+    <span class="kd">public</span> <span class="nf">VisualCounter</span><span class="p">(</span><span class="n">String</span> <span class="n">id</span><span class="p">,</span> <span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="kt">int</span> <span class="n">max</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">N</span> <span class="o">=</span> <span class="n">N</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">max</span> <span class="o">=</span> <span class="n">max</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">increment</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">opCount</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="n">max</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">opCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">decrement</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">opCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">count</span><span class="o">--</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">tally</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">count</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <h2 id="1211">1.2.11<a class="headerlink" href="#1211" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Develop an implementation SmartDate of our Date API that raises an exception if the date is not legal.</p>
