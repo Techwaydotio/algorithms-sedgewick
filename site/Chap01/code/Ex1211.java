@@ -1,7 +1,6 @@
 package Chap01.code;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class Ex1211 {
     public class SmartDate {
@@ -34,6 +33,17 @@ public class Ex1211 {
 
         boolean isLeapYear(int year) {
             return year%4 == 0 && (year%100 != 0 || year%400 == 0);
+        }
+
+        public boolean equals(Object x) {
+            if (this == x) return true;
+            if (x == null) return false;
+            if (this.getClass() != x.getClass()) return false;
+            Date that = (Date) x;
+            if (this.day != that.day) return false;
+            if (this.month != that.month) return false;
+            if (this.year != that.year) return false;
+            return true;
         }
 
         private void validateDate(int m, int d, int y) throws IllegalArgumentException {
