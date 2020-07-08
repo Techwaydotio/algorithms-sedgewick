@@ -803,14 +803,38 @@ legal.</p>
 <span class="p">}</span>
 </code></pre></div>
 
-<p><strong>TODO</strong></p>
 <h2 id="1212">1.2.12<a class="headerlink" href="#1212" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Add a method dayOfTheWeek() to SmartDate that returns a String value
 Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday, giving the appropriate day of the week for the date. You may assume that the date is in the 21st
 century</p>
 </blockquote>
-<p><strong>TODO</strong></p>
+<p>A nice hack:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">getDay</span><span class="p">(</span><span class="kt">int</span> <span class="n">day</span><span class="p">,</span> <span class="kt">int</span> <span class="n">month</span><span class="p">,</span> <span class="kt">int</span> <span class="n">year</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">String</span> <span class="n">dayOfWeek</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="n">String</span><span class="o">[]</span> <span class="n">days</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&quot;Sunday&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Monday&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Tuesday&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Wednesday&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Thursday&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Friday&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Saturday&quot;</span>
+    <span class="p">};</span>
+
+    <span class="n">String</span> <span class="n">date</span> <span class="o">=</span> <span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">month</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">year</span><span class="p">);</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">SimpleDateFormat</span> <span class="n">format1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;d/M/yyyy&quot;</span><span class="p">);</span>
+        <span class="n">Date</span> <span class="n">dt1</span> <span class="o">=</span> <span class="n">format1</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">date</span><span class="p">);</span>
+        <span class="n">dayOfWeek</span> <span class="o">=</span> <span class="n">days</span><span class="o">[</span><span class="n">dt1</span><span class="p">.</span><span class="na">getDay</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">dayOfWeek</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <h2 id="1213">1.2.13<a class="headerlink" href="#1213" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Using our implementation of Date as a model (page 91), develop an implementation of Transaction.</p>
