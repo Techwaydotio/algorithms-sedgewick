@@ -839,13 +839,92 @@ century</p>
 <blockquote>
 <p>Using our implementation of Date as a model (page 91), develop an implementation of Transaction.</p>
 </blockquote>
-<p><strong>TODO</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Transaction</span> <span class="kd">implements</span> <span class="n">Comparable</span> <span class="o">&lt;</span> <span class="n">Transaction</span> <span class="o">&gt;</span> <span class="p">{</span>
+    <span class="n">String</span> <span class="n">who</span><span class="p">;</span>
+    <span class="n">Date</span> <span class="n">when</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">amount</span><span class="p">;</span>
+
+    <span class="n">Transaction</span><span class="p">(</span><span class="n">String</span> <span class="n">who</span><span class="p">,</span> <span class="n">Date</span> <span class="n">when</span><span class="p">,</span> <span class="kt">double</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">who</span> <span class="o">=</span> <span class="n">who</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">when</span> <span class="o">=</span> <span class="n">when</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">amount</span> <span class="o">=</span> <span class="n">amount</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">String</span> <span class="nf">who</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">who</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">Date</span> <span class="nf">when</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">when</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">double</span> <span class="nf">getAmount</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">amount</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">StringBuilder</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+        <span class="n">s</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;&lt;Transaction &quot;</span><span class="p">);</span>
+        <span class="n">s</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;who=&quot;</span> <span class="o">+</span> <span class="n">who</span><span class="p">);</span>
+        <span class="n">s</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot; when=&quot;</span> <span class="o">+</span> <span class="n">when</span><span class="p">);</span>
+        <span class="n">s</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot; amount=&quot;</span> <span class="o">+</span> <span class="n">amount</span><span class="p">);</span>
+        <span class="n">s</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;&gt;&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">s</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="p">(</span><span class="n">Object</span> <span class="n">that</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// If the object is compared with itself then return true</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">that</span> <span class="o">==</span> <span class="k">this</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">that</span> <span class="k">instanceof</span> <span class="n">Transaction</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">Transaction</span> <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="n">that</span><span class="p">;</span>
+
+        <span class="c1">// Compare the data members and return accordingly</span>
+        <span class="k">return</span> <span class="n">Double</span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">t</span><span class="p">.</span><span class="na">getAmount</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span>
+            <span class="n">t</span><span class="p">.</span><span class="na">who</span> <span class="o">==</span> <span class="n">who</span> <span class="o">&amp;&amp;</span> <span class="n">when</span> <span class="o">==</span> <span class="n">t</span><span class="p">.</span><span class="na">when</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">amount</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="n">when</span><span class="p">.</span><span class="na">hashCode</span><span class="p">();</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="n">who</span><span class="p">.</span><span class="na">hashCode</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="p">(</span><span class="n">Transaction</span> <span class="n">that</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">when</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">that</span><span class="p">.</span><span class="na">when</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">when</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">that</span><span class="p">.</span><span class="na">when</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// Transaction is identical: compare amount and who</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">amount</span> <span class="o">&lt;</span> <span class="n">that</span><span class="p">.</span><span class="na">amount</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">amount</span> <span class="o">&gt;</span> <span class="n">that</span><span class="p">.</span><span class="na">amount</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">who</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">that</span><span class="p">.</span><span class="na">who</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <h2 id="1214">1.2.14<a class="headerlink" href="#1214" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Using our implementation of equals() in Date as a model (page 103), develop
 implementations of equals() for Transaction.</p>
 </blockquote>
-<p><strong>TODO</strong></p>
+<p>Done in 1.2.23</p>
 <h2 id="1216">1.2.16<a class="headerlink" href="#1216" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Rational numbers. Implement an immutable data type Rational for rational
