@@ -947,11 +947,68 @@ limit the possibility of overflow. Use Euclid’s algorithm (see page 4) to ensu
 numerator and denominator never have any common factors. Include a test client that
 exercises all of your methods.</p>
 </blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span> <span class="kd">class</span> <span class="nc">Rational</span> <span class="p">{</span>
+ <span class="kt">int</span> <span class="n">numerator</span><span class="p">;</span>
+ <span class="kt">int</span> <span class="n">denominator</span><span class="p">;</span>
+
+ <span class="n">Rational</span><span class="p">(</span><span class="kt">int</span> <span class="n">numerator</span><span class="p">,</span> <span class="kt">int</span> <span class="n">denominator</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="na">numerator</span> <span class="o">=</span> <span class="n">numerator</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="na">denominator</span> <span class="o">=</span> <span class="n">denominator</span><span class="p">;</span>
+ <span class="p">}</span>
+
+ <span class="n">Rational</span> <span class="nf">plus</span><span class="p">(</span><span class="n">Rational</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">denominator</span> <span class="o">==</span> <span class="n">b</span><span class="p">.</span><span class="na">denominator</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="k">new</span> <span class="n">Rational</span><span class="p">(</span><span class="n">numerator</span> <span class="o">+</span> <span class="n">b</span><span class="p">.</span><span class="na">numerator</span><span class="p">,</span> <span class="n">denominator</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">int</span> <span class="n">lcmNumber</span> <span class="o">=</span> <span class="n">lcm</span><span class="p">(</span><span class="n">denominator</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="na">denominator</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">timesFirst</span> <span class="o">=</span> <span class="n">lcmNumber</span> <span class="o">/</span> <span class="n">denominator</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">timesSecond</span> <span class="o">=</span> <span class="n">lcmNumber</span> <span class="o">/</span> <span class="n">b</span><span class="p">.</span><span class="na">denominator</span><span class="p">;</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="n">Rational</span><span class="p">((</span><span class="n">timesFirst</span> <span class="o">*</span> <span class="n">numerator</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">timesSecond</span> <span class="o">*</span> <span class="n">b</span><span class="p">.</span><span class="na">numerator</span><span class="p">),</span> <span class="n">lcmNumber</span><span class="p">);</span>
+ <span class="p">}</span>
+
+ <span class="n">Rational</span> <span class="nf">minus</span><span class="p">(</span><span class="n">Rational</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">denominator</span> <span class="o">==</span> <span class="n">b</span><span class="p">.</span><span class="na">denominator</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="k">new</span> <span class="n">Rational</span><span class="p">(</span><span class="n">numerator</span> <span class="o">-</span> <span class="n">b</span><span class="p">.</span><span class="na">numerator</span><span class="p">,</span> <span class="n">denominator</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">int</span> <span class="n">lcmNumber</span> <span class="o">=</span> <span class="n">lcm</span><span class="p">(</span><span class="n">denominator</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="na">denominator</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">timesFirst</span> <span class="o">=</span> <span class="n">lcmNumber</span> <span class="o">/</span> <span class="n">denominator</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">timesSecond</span> <span class="o">=</span> <span class="n">lcmNumber</span> <span class="o">/</span> <span class="n">b</span><span class="p">.</span><span class="na">denominator</span><span class="p">;</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="n">Rational</span><span class="p">((</span><span class="n">timesFirst</span> <span class="o">*</span> <span class="n">numerator</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">timesSecond</span> <span class="o">*</span> <span class="n">b</span><span class="p">.</span><span class="na">numerator</span><span class="p">),</span> <span class="n">lcmNumber</span><span class="p">);</span>
+ <span class="p">}</span>
+
+ <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="p">(</span><span class="n">Rational</span> <span class="n">that</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">denominator</span> <span class="o">==</span> <span class="n">that</span><span class="p">.</span><span class="na">denominator</span> <span class="o">&amp;&amp;</span> <span class="n">numerator</span> <span class="o">==</span> <span class="n">that</span><span class="p">.</span><span class="na">numerator</span><span class="p">;</span>
+ <span class="p">}</span>
+
+ <span class="n">Rational</span> <span class="nf">times</span><span class="p">(</span><span class="n">Rational</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">newNuminator</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">*</span> <span class="n">b</span><span class="p">.</span><span class="na">numerator</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">newDenuminator</span> <span class="o">=</span> <span class="n">denominator</span> <span class="o">*</span> <span class="n">b</span><span class="p">.</span><span class="na">denominator</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="k">new</span> <span class="n">Rational</span><span class="p">(</span><span class="n">newNuminator</span><span class="p">,</span> <span class="n">newDenuminator</span><span class="p">);</span>
+ <span class="p">}</span>
+
+ <span class="n">Rational</span> <span class="nf">divides</span><span class="p">(</span><span class="n">Rational</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Rational</span> <span class="n">reciprocal</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Rational</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="na">denominator</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="na">numerator</span><span class="p">);</span>
+
+  <span class="c1">// Ignore simplification step...</span>
+  <span class="k">return</span> <span class="n">times</span><span class="p">(</span><span class="n">reciprocal</span><span class="p">);</span>
+ <span class="p">}</span>
+
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s">&quot;Rational{&quot;</span> <span class="o">+</span>
+   <span class="s">&quot;numerator=&quot;</span> <span class="o">+</span> <span class="n">numerator</span> <span class="o">+</span>
+   <span class="s">&quot;, denominator=&quot;</span> <span class="o">+</span> <span class="n">denominator</span> <span class="o">+</span>
+   <span class="sc">&#39;}&#39;</span><span class="p">;</span>
+ <span class="p">}</span>
+</code></pre></div>
+
 <h2 id="1217">1.2.17<a class="headerlink" href="#1217" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Robust implementation of rational numbers. Use assertions to develop an implementation of 
 Rational (see Exercise 1.2.16) that is immune to overflow.</p>
 </blockquote>
+<p><strong>TODO</strong></p>
 <h2 id="1218">1.2.18<a class="headerlink" href="#1218" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Variance for accumulator. Validate that the following code, which adds the
@@ -982,6 +1039,33 @@ of the numbers presented as arguments to addDataValue():</p>
 <p>This implementation is less susceptible to roundoff error 
 than the straightforward implementation based on saving the sum of the squares of the numbers.</p>
 </blockquote>
+<p>Add a main and verify that after each step the results are correct:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+ <span class="n">Accumulator</span> <span class="n">acc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Accumulator</span><span class="p">();</span>
+ <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">acc</span><span class="p">.</span><span class="na">mean</span><span class="p">());</span> <span class="c1">// 0.0</span>
+ <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">acc</span><span class="p">.</span><span class="na">var</span><span class="p">());</span> <span class="c1">// 0.0</span>
+ <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">acc</span><span class="p">.</span><span class="na">stddev</span><span class="p">());</span> <span class="c1">// 0.0</span>
+
+ <span class="n">acc</span><span class="p">.</span><span class="na">addDataValue</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+
+ <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">acc</span><span class="p">.</span><span class="na">mean</span><span class="p">());</span> <span class="c1">// 10.0</span>
+ <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">acc</span><span class="p">.</span><span class="na">var</span><span class="p">());</span> <span class="c1">// NaN</span>
+ <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">acc</span><span class="p">.</span><span class="na">stddev</span><span class="p">());</span> <span class="c1">// NaN</span>
+
+ <span class="n">acc</span><span class="p">.</span><span class="na">addDataValue</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
+
+ <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">acc</span><span class="p">.</span><span class="na">mean</span><span class="p">());</span> <span class="c1">// 12.5</span>
+ <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">acc</span><span class="p">.</span><span class="na">var</span><span class="p">());</span> <span class="c1">// 12.5</span>
+ <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">acc</span><span class="p">.</span><span class="na">stddev</span><span class="p">());</span> <span class="c1">// 3.5355339059327378</span>
+
+ <span class="n">acc</span><span class="p">.</span><span class="na">addDataValue</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+
+ <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">acc</span><span class="p">.</span><span class="na">mean</span><span class="p">());</span> <span class="c1">// 15</span>
+ <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">acc</span><span class="p">.</span><span class="na">var</span><span class="p">());</span> <span class="c1">// 15</span>
+ <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">acc</span><span class="p">.</span><span class="na">stddev</span><span class="p">());</span> <span class="c1">// 5</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <h2 id="1219">1.2.19<a class="headerlink" href="#1219" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Parsing. Develop the parse constructors for your Date and Transaction implementations of Exercise 1.2.13 that take a single String argument to specify the
