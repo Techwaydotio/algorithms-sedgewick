@@ -996,6 +996,22 @@ Partial solution:</p>
  <span class="n">year</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">fields</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
+
+<p>For simplicity:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Transaction</span> <span class="p">{</span>
+    <span class="n">String</span> <span class="n">who</span><span class="p">;</span>
+    <span class="n">Date</span> <span class="n">when</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">amount</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Transaction</span><span class="p">(</span><span class="n">String</span> <span class="n">transaction</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">ParseException</span> <span class="p">{</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">fields</span> <span class="o">=</span> <span class="n">transaction</span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+        <span class="n">who</span> <span class="o">=</span> <span class="n">fields</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+        <span class="n">SimpleDateFormat</span> <span class="n">format</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="p">(</span><span class="s">&quot;dd-MM-yyyy&quot;</span><span class="p">);</span>
+        <span class="n">when</span> <span class="o">=</span> <span class="n">format</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">fields</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+        <span class="n">amount</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">fields</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
                 
               
               
