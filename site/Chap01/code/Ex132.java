@@ -45,9 +45,6 @@ public class Ex132 {
                 else if (!s.isEmpty()) System.out.print(s.pop() + " ");
             }
         }
-        while (!s.isEmpty()) {
-            System.out.print(s.pop() + " ");
-        }
         System.out.println("(" + s.size() + " left on stack)");
     }
 }
