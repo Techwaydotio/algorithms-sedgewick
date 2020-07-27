@@ -19,7 +19,7 @@ public class Ex137 {
         public Item peek() {
             if (N > 0) {
                 return a[0];
-            }E
+            }
             return null;
         }
 
