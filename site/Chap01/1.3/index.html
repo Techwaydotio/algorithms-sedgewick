@@ -1137,6 +1137,56 @@ we pop all items into another stack and insert a left parenthesis '(' and then w
 <p>Write a filter InfixToPostfix that converts an arithmetic expression from infix to postfix.</p>
 </blockquote>
 <p>Taken from <a href="https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix/">here</a></p>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span> <span class="kt">int</span> <span class="nf">precedence</span><span class="p">(</span><span class="kt">char</span> <span class="n">ch</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="sc">&#39;+&#39;</span><span class="p">:</span>
+        <span class="k">case</span> <span class="sc">&#39;-&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+
+        <span class="k">case</span> <span class="sc">&#39;*&#39;</span><span class="p">:</span>
+        <span class="k">case</span> <span class="sc">&#39;/&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+
+        <span class="k">case</span> <span class="sc">&#39;^&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">static</span> <span class="n">String</span> <span class="nf">infixToPostfix</span><span class="p">(</span><span class="n">String</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Stack</span> <span class="n">output</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span> <span class="o">&lt;</span> <span class="n">Character</span> <span class="o">&gt;</span> <span class="p">();</span>
+    <span class="n">Stack</span> <span class="n">symbols</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span> <span class="o">&lt;</span> <span class="n">Character</span> <span class="o">&gt;</span> <span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">char</span> <span class="n">c</span><span class="p">:</span> <span class="n">input</span><span class="p">.</span><span class="na">toCharArray</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Character</span><span class="p">.</span><span class="na">isLetterOrDigit</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">output</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">&#39; &#39;</span> <span class="o">||</span> <span class="n">c</span> <span class="o">==</span> <span class="sc">&#39;(&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">symbols</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">&#39;)&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">symbols</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span> <span class="n">symbols</span><span class="p">.</span><span class="na">peek</span><span class="p">()</span> <span class="o">!=</span> <span class="sc">&#39;(&#39;</span><span class="p">)</span>
+                <span class="n">output</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">symbols</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">symbols</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span> <span class="n">symbols</span><span class="p">.</span><span class="na">peek</span><span class="p">()</span> <span class="o">!=</span> <span class="sc">&#39;(&#39;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="s">&quot;Invalid Expression&quot;</span><span class="p">;</span> <span class="c1">// invalid expression</span>
+            <span class="k">else</span>
+                <span class="n">symbols</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">symbols</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">precedence</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">precedence</span><span class="p">((</span><span class="kt">char</span><span class="p">)</span> <span class="n">symbols</span><span class="p">.</span><span class="na">peek</span><span class="p">()))</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">((</span><span class="kt">char</span><span class="p">)</span> <span class="n">symbols</span><span class="p">.</span><span class="na">peek</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;(&#39;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="s">&quot;Invalid Expression&quot;</span><span class="p">;</span>
+                <span class="n">output</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">symbols</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span>
+            <span class="p">}</span>
+            <span class="n">symbols</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">symbols</span><span class="p">.</span><span class="na">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">output</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">symbols</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">output</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <h2 id="1311">1.3.11<a class="headerlink" href="#1311" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Write a program EvaluatePostfix that takes a postfix expression from standard input, evaluates it, and prints the value. (Piping the output of your program from
