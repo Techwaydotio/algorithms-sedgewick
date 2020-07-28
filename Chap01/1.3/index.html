@@ -1221,7 +1221,33 @@ the previous exercise to this program gives equivalent behavior to Evaluate.</p>
 of strings as argument and returns a copy of the stack. Note : This ability is a prime
 example of the value of having an iterator, because it allows development of such functionality without changing the basic API.</p>
 </blockquote>
-<p><strong>TODO</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">FixedCapacityStackOfStrings</span> <span class="nf">copy</span><span class="p">(</span><span class="n">FixedCapacityStackOfStrings</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">FixedCapacityStackOfStrings</span> <span class="n">copy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FixedCapacityStackOfStrings</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="n">s</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// grab the top element</span>
+        <span class="n">String</span> <span class="n">top</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
+        <span class="c1">// Shift all the other elements into the destination stack</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="n">s</span><span class="p">.</span><span class="na">size</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">copy</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="c1">// push the top element into the source stack</span>
+        <span class="n">s</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">top</span><span class="p">);</span>
+        <span class="c1">// Shift the previously shifted elements into the source stack again</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">copy</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">s</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">copy</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// The items in the source stack are in reverse order here. Push them into the destination to get the original stack</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">s</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">copy</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">copy</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <h2 id="1313">1.3.13<a class="headerlink" href="#1313" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Suppose that a client performs an intermixed sequence of (queue) enqueue and
