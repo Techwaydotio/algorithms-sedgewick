@@ -1221,6 +1221,7 @@ the previous exercise to this program gives equivalent behavior to Evaluate.</p>
 of strings as argument and returns a copy of the stack. Note : This ability is a prime
 example of the value of having an iterator, because it allows development of such functionality without changing the basic API.</p>
 </blockquote>
+<p>Taken from <a href="https://www.geeksforgeeks.org/clone-a-stack-without-extra-space/">here</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="n">FixedCapacityStackOfStrings</span> <span class="nf">copy</span><span class="p">(</span><span class="n">FixedCapacityStackOfStrings</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">FixedCapacityStackOfStrings</span> <span class="n">copy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FixedCapacityStackOfStrings</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
     <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -1268,7 +1269,64 @@ d. 4 3 2 1 0 5 6 7 8 9
 abstraction with a fixed-size array, and then extend your implementation to use array
 resizing to remove the size restriction.</p>
 </blockquote>
-<p><strong>TODO</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">static</span> <span class="kd">class</span> <span class="nc">ResizingArrayQueueOfStrings</span> <span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">Iterable</span> <span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">a</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">ResizingArrayQueueOfStrings</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="p">)</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">N</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">size</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">N</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">resize</span><span class="p">(</span><span class="kt">int</span> <span class="n">max</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Move stack to a new array of size max.</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">temp</span> <span class="o">=</span> <span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="p">)</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[</span><span class="n">max</span><span class="o">]</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">temp</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enqueue</span><span class="p">(</span><span class="n">String</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Add item to the end of the queue.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">N</span> <span class="o">==</span> <span class="n">a</span><span class="p">.</span><span class="na">length</span><span class="p">)</span> <span class="n">resize</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
+        <span class="n">a</span><span class="o">[</span><span class="n">N</span><span class="o">++]</span> <span class="o">=</span> <span class="n">item</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">pop</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// Remove item from the front of queue.</span>
+        <span class="n">String</span> <span class="n">item</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">a</span><span class="o">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">N</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">N</span> <span class="o">==</span> <span class="n">a</span><span class="p">.</span><span class="na">length</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span> <span class="n">resize</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">item</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Iterator</span> <span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;</span> <span class="n">iterator</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">ResizingArrayQueueOfStringsIterator</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">ResizingArrayQueueOfStringsIterator</span> <span class="kd">implements</span> <span class="n">Iterator</span> <span class="o">&lt;</span> <span class="n">String</span> <span class="o">&gt;</span> <span class="p">{</span> <span class="c1">// Support FIFO iteration.</span>
+        <span class="kd">private</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasNext</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">next</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="p">()</span> <span class="p">{}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <h2 id="1315">1.3.15<a class="headerlink" href="#1315" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Write a Queue client that takes a command-line argument k and prints the kth

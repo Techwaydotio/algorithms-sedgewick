@@ -10,10 +10,7 @@ strictly between 0 and 1 and false otherwise.
     }
 
     static boolean isBetween0and1(double x) {
-        if (x > 0 && x < 1) {
-            return true;
-        }
-        return false;
+        return x > 0 && x < 1;
     }
 
     public static void main(String[] args) {
