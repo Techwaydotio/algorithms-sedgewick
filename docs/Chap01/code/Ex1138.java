@@ -3,14 +3,13 @@ package Chap01.code;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Ex1138 {
 
     static int[] readInts(String fileName) {
-        List<Integer> whiteList = new ArrayList<>();
-        File file = new File(fileName);
+        var whiteList = new ArrayList<Integer>();
+        var file = new File(fileName);
         BufferedReader reader = null;
 
         try {
@@ -60,5 +59,6 @@ public class Ex1138 {
         long endTime = System.nanoTime();
         long totalTime = endTime - startTime;
         System.out.println(totalTime);
+        s.close();
     }
 }

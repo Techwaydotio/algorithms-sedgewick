@@ -14,8 +14,8 @@ public class Ex1131 extends Canvas {
         this.p = p;
     }
     public static void main(String[] args) {
-        int N = Integer.parseInt(args[0]);
-        double p = Double.parseDouble(args[1]);
+        int N = 10;
+        double p = 0.5;
 
         JFrame frame = new JFrame("Random Connections");
         Canvas canvas = new Ex1131(N, p);
