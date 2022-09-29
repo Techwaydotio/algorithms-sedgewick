@@ -1,14 +1,13 @@
 package Chap01.code;
 
 import java.awt.geom.Point2D;
-import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Ex121 {
     int N;
 
     public static void main(String[] args) {
-        int N = Integer.parseInt(args[0]);
+        int N = 10;
         Point2D.Double[] points = new Point2D.Double[N];
         for (int i = 0; i < N; i += 1) {
             double x = ThreadLocalRandom.current().nextDouble(0, 400);
